@@ -70,6 +70,14 @@ def create_accounts():
 
 # ... place you code here to READ an account ...
 
+@app.route("accounts/<id: %s>", methods=["GET"])
+def read_account(account_id):
+    account = Account()
+    app.logger.info("Request to read account with id: %s")
+    re
+    
+
+
 
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
