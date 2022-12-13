@@ -142,7 +142,7 @@ class TestAccountService(TestCase):
         self.assertEqual(data["name"], account.name)
 
     def test_account_not_found(self):
-        
+        """It should return not fouund for id 0"""
         account = AccountFactory()
         response = self.client.get(
             f"{BASE_URL}/0,"
