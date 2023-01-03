@@ -135,15 +135,10 @@ class TestAccountService(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         data = response.get_json()
 
-        location = self.client.get(
-            f"{BASE_URL}/{account.id}", content_type="application/json"
-        )
-
         self.assertEqual(data["name"], account.name)
 
     def test_account_not_found(self):
         """It should return not fouund for id 0"""
-        account = AccountFactory()
         response = self.client.get(
             f"{BASE_URL}/0,"
         )
@@ -184,5 +179,5 @@ class TestAccountService(TestCase):
         """It should not allow an illegal method call"""
         resp = self.client.delete(BASE_URL)
         self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-        
+    
     # ADD YOUR TEST CASES HERE ...
