@@ -63,4 +63,4 @@ spec:
       - name: args
         value: ["--count","--max-complexity=10","--max-line-length=127","--statistics"] 
       runAfter:
-        - lint
+        - clone
