@@ -131,8 +131,8 @@ class TestAccountService(TestCase):
             json=account.serialize(),
             content_type="application/json"
         )
-        
-        self.assertEqual(response.status_code,status.HTTP_201_CREATED)
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         data = response.get_json()
 
         location = self.client.get(
@@ -149,8 +149,6 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-
-
     def test_update_account(self):
         """It should Update an existing Account"""
         # create an Account to update
@@ -165,7 +163,6 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         updated_account = resp.get_json()
         self.assertEqual(updated_account["name"], "Something Known")
-
 
     def test_list_accounts(self):
         """should get accounts list"""
@@ -188,6 +185,4 @@ class TestAccountService(TestCase):
         resp = self.client.delete(BASE_URL)
         self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
         
-
     # ADD YOUR TEST CASES HERE ...
-
