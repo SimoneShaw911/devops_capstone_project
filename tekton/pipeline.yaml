@@ -51,10 +51,10 @@ spec:
       runAfter:
         - clone
 
-    - name: test
+    - name: tests
       workspaces:
         - name: source
-          workspace: pipeline-workspace          
+          workspace: pipeline-workspace
       taskRef:
         name: nose
       params:
@@ -63,4 +63,4 @@ spec:
       - name: args
         value: "-v --with-spec --spec-color"
       runAfter:
-        - clone
+        - clone    

@@ -56,16 +56,16 @@ kind: Task
 metadata:
   name: nose
 spec:
-  description: This task run nosetests as command with python image
+  description: This task will run nosetests on the provided input.
   workspaces:
     - name: source
   params:
     - name: args
-      description: These arguments are for nostests
+      description: Arguments to pass to nose
       type: string
       default: "-v"
     - name: database_uri
-      description: This is for passing in test database
+      description: Database connection string
       type: string
       default: "sqlite:///test.db"
   steps:
@@ -78,8 +78,10 @@ spec:
       script: |
         #!/bin/bash
         set -e
+
+        echo "***** Installing dependencies *****"
         python -m pip install --upgrade pip wheel
         pip install -qr requirements.txt
-        nosetests -v --with-spec --spec-color
-      
 
+        echo "***** Running nosetests with: $(params.args)"
+        nosetests $(params.args)
