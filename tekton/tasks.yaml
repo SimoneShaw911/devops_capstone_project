@@ -31,7 +31,7 @@ spec:
           value: $(workspaces.source.path)
       workingDir: $(workspaces.source.path)
       securityContext:
-        runAsNonRoot: false
+        runAsNonRoot: False
         runAsUser: 0
       script: |
         #!/usr/bin/env sh
